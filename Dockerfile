@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 
 # Build the application without running tests
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Production stage
 FROM ubuntu:latest
