@@ -20,7 +20,7 @@ import com.acks.task1.models.Inventory;
 
 
 @RestController
-@RequestMapping("/inventory")
+@RequestMapping("/inventory-app")
 public class InventoryController {
 
     public  List<Inventory> inventoryList = new ArrayList<>(Arrays.asList(
