@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    
+    environment {
+        DOCKER_IMAGE = 'spring-boot-inventory'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    sh 'mvn clean package'
+                    sh 'sudo docker build -t $DOCKER_IMAGE .'
+                }
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                 script {
+                    sh 'mvn test'
+                   
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'docker-compose up -d'
+            }
+        }
+    }
+}
