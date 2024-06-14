@@ -2,8 +2,8 @@ FROM ubuntu:latest
 
 WORKDIR /app
 
-COPY target/my-spring-boot-app.jar /app
+COPY task1-0.0.1-SNAPSHOT.jar /app/task1-0.0.1-SNAPSHOT.jar
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "my-spring-boot-app.jar"]
+CMD ["java", "-jar", "task1-0.0.1-SNAPSHOT.jar"]

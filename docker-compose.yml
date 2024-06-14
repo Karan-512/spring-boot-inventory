@@ -2,7 +2,7 @@ version: '3'
 
 services:
   my-spring-boot-app:
-    image: my-spring-boot-app  
+    image: task1-0.0.1-SNAPSHOT
     build:
       context: .
       dockerfile: Dockerfile
