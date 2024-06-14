@@ -10,7 +10,7 @@
 
 
 # Stage 1: Build stage
-FROM maven:3.8.4-openjdk-17 AS build
+FROM maven:3.8.7-openjdk-21-slim AS build
 
 WORKDIR /build
 
