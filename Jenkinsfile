@@ -14,14 +14,16 @@ pipeline {
                 }
             }
         }
-        // stage('Test') {
-        //     steps {
-        //          script {
-        //             sh 'mvn test'
+
+        stage('Test') {
+            steps {
+                 script {
+                    sh 'mvn test'
                    
-        //         }
-        //     }
-        // }
+                }
+            }
+        }
+        
         stage('Deploy') {
             steps {
                 sh 'sudo docker compose up -d'
