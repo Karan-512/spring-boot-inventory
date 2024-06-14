@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk21:jdk-21.0.0.10_1-alpine
+FROM ubuntu:latest
 
 WORKDIR /app
 
