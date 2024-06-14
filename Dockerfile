@@ -1,5 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine-jre
-
+FROM openjdk:17-jdk-slim
 # Copy your Spring Boot application JAR file
 COPY target/task1-0.0.1-SNAPSHOT.jar /app/app.jar
 
