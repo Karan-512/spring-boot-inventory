@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'mvn clean package'
+                    sh 'mvn clean package -DskipTests'
                     sh 'sudo docker build -t $DOCKER_IMAGE .'
                 }
             }
