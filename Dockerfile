@@ -10,26 +10,22 @@
 
 
 # Stage 1: Build stage
-FROM maven:3.8.7-openjdk-21-slim AS build
+FROM adoptopenjdk/openjdk21:jdk-21.0.3_5-slim AS build
 
 WORKDIR /build
 
-# Copy only the pom.xml to resolve dependencies
-COPY pom.xml .
+# Copy the Maven project and pom.xml
+COPY . .
 
-# Download dependencies
-RUN mvn -B dependency:go-offline
+# Build the application without running tests
+RUN ./mvnw clean package -DskipTests
 
-# Copy the source code and build the application
-COPY src src
-RUN mvn -B clean package -DskipTests
-
-# Stage 2: Production stage
-FROM ubuntu:latest
+# Production stage
+FROM adoptopenjdk/openjdk21:jdk-21.0.3_5-slim
 
 WORKDIR /app
 
-# Copy the built JAR file from the previous stage
+# Copy the built JAR file from the build stage
 COPY --from=build /build/target/task1-0.0.1-SNAPSHOT.jar /app/task1-0.0.1-SNAPSHOT.jar
 
 # Expose port
