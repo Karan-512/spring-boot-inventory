@@ -14,7 +14,6 @@ pipeline {
                 }
             }
         }
-        
         // stage('Test') {
         //     steps {
         //          script {
@@ -23,7 +22,6 @@ pipeline {
         //         }
         //     }
         // }
-
         stage('Deploy') {
             steps {
                 sh 'docker-compose up -d'
