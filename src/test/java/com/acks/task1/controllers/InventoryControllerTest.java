@@ -55,7 +55,7 @@ public class InventoryControllerTest {
 
     @Test
     void testAddInventoryItem() throws Exception {
-        mockMvc.perform(delete("/inventory/deleteInventoryItem/1"))
+        mockMvc.perform(delete("/inventory-app/deleteInventoryItem/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)));
 
@@ -71,7 +71,7 @@ public class InventoryControllerTest {
 
     @Test
     void testGetAllProducts_shouldReturnAllItems() throws Exception{
-       mockMvc.perform(get("/inventory"))
+       mockMvc.perform(get("/inventory-app"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(3)))
                 .andExpect(jsonPath("$[0].name", is("iPhone 14 pro deep purple 128gb")))
@@ -82,7 +82,7 @@ public class InventoryControllerTest {
     @Test
     void testGetInventoryDetailbyID() throws Exception {
 
-       mockMvc.perform(get("/inventory/1"))
+       mockMvc.perform(get("/inventory-app/1"))
        .andExpect(status().isOk())
        .andExpect(jsonPath("$.name", is("iPhone 14 pro deep purple 128gb")))
        .andExpect(jsonPath("$.price", is(999.00)))
@@ -96,7 +96,7 @@ public class InventoryControllerTest {
     void testUpdateInventoryItem() throws Exception {
         Inventory updatedItem = new Inventory(1, "iPhone 14 pro max", 1099.00, 80);
 
-        mockMvc.perform(put("/inventory/updateInventoryItem/1")
+        mockMvc.perform(put("/inventory-app/updateInventoryItem/1")
         .contentType(MediaType.APPLICATION_JSON)
         .content(objectMapper.writeValueAsString(updatedItem)))
         .andExpect(status().isOk())
@@ -104,7 +104,7 @@ public class InventoryControllerTest {
         .andExpect(jsonPath("$.price", is(1099.00)))
         .andExpect(jsonPath("$.quantity", is(80)));
 
-        mockMvc.perform(get("/inventory/1"))
+        mockMvc.perform(get("/inventory-app/1"))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.name", is("iPhone 14 pro max")))
         .andExpect(jsonPath("$.price", is(1099.00)))
